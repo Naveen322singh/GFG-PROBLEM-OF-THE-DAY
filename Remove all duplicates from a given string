@@ -1,0 +1,33 @@
+class Solution {
+    String removeDuplicates(String str) {
+        boolean[] isPresent = new boolean[52];
+        String ans = "";
+        
+        for(int i = 0; i < str.length(); i++){
+            char ch = str.charAt(i);
+            int ci = -1;
+            
+            if(ch >= 'A' && ch <= 'Z'){
+                ci = ch - 'A';
+                
+                if(isPresent[26 + ci]){
+                    continue;
+                } else{
+                    ans += ch;
+                    isPresent[26 + ci] = true;
+                }
+            } else{
+                ci = ch - 'a';
+                
+                if(isPresent[ci]){
+                    continue;
+                } else{
+                    ans += ch;
+                    isPresent[ci] = true;
+                }
+            }
+        }
+        
+        return ans;
+    }
+}
