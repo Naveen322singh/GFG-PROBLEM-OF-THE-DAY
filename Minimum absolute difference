@@ -1,0 +1,31 @@
+class Solution
+{
+    int previous, difference;
+    
+    int absolute_diff(Node root)
+    {
+        // Assigned Max and Min Value
+        previous=Integer.MIN_VALUE;
+        difference=Integer.MAX_VALUE;
+        
+        findMinDiff(root);
+        return difference;
+    }
+    
+    
+    void findMinDiff(Node root){
+        // There is no value
+        if(root==null){
+            return;
+        }
+        
+        // Inorder Traversal
+        findMinDiff(root.left);
+        
+        // Checking previous is not equal to MIN_VALUE and the value of previous data and current data is less than diff then assing it to difference 
+        if(previous!=Integer.MIN_VALUE && Math.abs(previous-root.data)<difference) 
+            difference=Math.abs(previous-root.data);
+        previous=root.data;
+        findMinDiff(root.right);
+    }
+}
