@@ -1,0 +1,26 @@
+class Solution {
+
+// Iterate through the array and prints each element followed by a space.
+    public void printArr(int n, int arr[]) {
+        for(int i : arr){
+            System.out.print(i+" ");
+        }
+        System.out.println();
+    }
+
+// Iterate through the array and sets each element to zero.
+
+    public void setToZero(int n, int arr[]) {
+        for(int i=0;i<n;i++){
+            arr[i] = 0;
+        }
+    }
+
+// Iterate through the array and performs a bitwise XOR operation between each element and its index.
+
+    public void xor1ToN(int n, int arr[]) {
+        for(int i=0;i<n;i++){
+            arr[i] = arr[i] ^ i;
+        }
+    }
+}
