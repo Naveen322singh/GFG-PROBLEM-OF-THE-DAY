@@ -1,0 +1,55 @@
+class Solution{
+    //Function to partition the array around the range such 
+    //that array is divided into three parts.
+    
+    //what is the compilation error in following code
+    public void threeWayPartition(int array[], int a, int b)
+    {
+        // code here 
+        int[] narr = new int[array.length];
+        
+        for(int i=0;i<array.length;i++){
+            narr[i] = array[i];
+            // System.out.println("narr["+i+"]: "+narr[i]);
+            // System.out.println("array["+i+"]: "+array[i]);
+        }
+        
+        Arrays.sort(narr);
+        // for(int i:narr){
+        //     System.out.print(i+ " ");
+        // }
+        // System.out.println();
+        int j=0;
+        for(int k=0;k<narr.length;k++)
+        {
+            if(narr[k]<a){
+               array[j] = narr[k];
+               j++;
+            }else{
+                break;
+            }
+        }
+        for(int i=j;i<narr.length;i++){
+            if(narr[i]>= a && narr[i] <= b){
+                array[j] = narr[i];
+                j++;
+            }else{
+                break;
+            }
+        }
+        if(j == array.length){
+            return;
+        }
+        // System.out.println(j);
+        for(int i=j; i<narr.length;i++){
+            if(narr[i]>b){
+                array[j] = narr[i];
+                j++;
+            }
+        }
+        // for(int i:array){
+        //     System.out.print(i+ " ");
+        // }
+        // System.out.println();
+    }
+}
