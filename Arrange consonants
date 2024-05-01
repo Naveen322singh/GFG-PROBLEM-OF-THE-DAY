@@ -1,0 +1,32 @@
+class Solution {
+    
+    public Node arrangeCV(Node head){
+        //write code here and return the head of changed linked list
+        Node vowels = new Node('A');
+        Node res = vowels;
+        Node consonants = new Node('B');
+        Node consHead = consonants;
+        Node temp = head;
+        
+        while(temp != null){
+            
+            if(
+                temp.data == 'a' || temp.data == 'e' || temp.data == 'i' ||
+                temp.data == 'o' || temp.data == 'u'
+            ){
+                vowels.next = temp;
+                vowels = vowels.next;
+            }
+            else{
+                consonants.next = temp;
+                consonants = consonants.next;
+            }
+            temp = temp.next;
+            vowels.next = null;
+            consonants.next = null;
+        }
+        vowels.next = consHead.next;
+        return res.next;
+        
+    }
+}
