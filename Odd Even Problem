@@ -1,0 +1,27 @@
+class Solution {
+    public static String oddEven(String s) {
+       HashMap<Character, Integer> map = new HashMap<>();
+        
+        for (char c : s.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        
+        int x = 0, y = 0;
+        
+        for (HashMap.Entry<Character, Integer> entry : map.entrySet()) {
+            char character = entry.getKey();
+            int frequency = entry.getValue();
+            int position = character - 'a' + 1; 
+            
+            if (frequency % 2 == 0 && position % 2 == 0) {
+                x++;
+            } else if (frequency % 2 != 0 && position % 2 != 0) {
+                y++;
+            }
+        }
+        
+     
+        String ans = ((x + y) % 2 == 0) ? "EVEN" : "ODD";
+        return ans;
+    }
+}
