@@ -1,9 +1,3 @@
-User
-Jeswin Paul Dany
-(Edited)
-4 minutes ago
-
-Java Solution | O(logn) | Most Efficient | Binary Search Algorithm
 class Solution {
     public int findExtra(int n, int arr1[], int arr2[]) {
         int low = 0;
