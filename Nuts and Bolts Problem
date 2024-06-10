@@ -1,0 +1,47 @@
+class Solution {
+    void matchPairs(int n, char nuts[], char bolts[]) {
+        // Predefined order of the elements
+        char[] order = {'!', '#', '$', '%', '&', '*', '?', '@', '^'};
+
+        // Create a map to store the position of each character in the order array
+        HashMap<Character, Integer> orderMap = new HashMap<>();
+        for (int i = 0; i < order.length; i++) {
+            orderMap.put(order[i], i);
+        }
+
+        // Sort nuts and bolts arrays according to the predefined order
+        sortAccordingToOrder(nuts, orderMap);
+        sortAccordingToOrder(bolts, orderMap);
+    }
+
+    void sortAccordingToOrder(char[] array, HashMap<Character, Integer> orderMap) {
+        // Simple insertion sort to sort the array according to the order map
+        for (int i = 1; i < array.length; i++) {
+            char key = array[i];
+            int j = i - 1;
+            while (j >= 0 && orderMap.get(array[j]) > orderMap.get(key)) {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+            array[j + 1] = key;
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        
+        int n1 = 5;
+        char[] nuts1 = {'@', '%', '$', '#', '^'};
+        char[] bolts1 = {'%', '@', '#', '$', '^'};
+        sol.matchPairs(n1, nuts1, bolts1);
+        System.out.println(nuts1);
+        System.out.println(bolts1);
+        
+        int n2 = 9;
+        char[] nuts2 = {'^', '&', '%', '@', '#', '*', '$', '?', '!'};
+        char[] bolts2 = {'?', '#', '@', '%', '&', '*', '$', '^', '!'};
+        sol.matchPairs(n2, nuts2, bolts2);
+        System.out.println(nuts2);
+        System.out.println(bolts2);
+    }
+}
