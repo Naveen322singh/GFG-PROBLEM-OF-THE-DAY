@@ -1,0 +1,17 @@
+class Solution {
+    static String armstrongNumber(int n) {
+        // code here
+        int j = n;//we need the original number for checking the result at end , so initialize a variable and assign it the value of n
+        int k = 0;//a variable for tracking the digits of the original number
+        int sum = 0;//this variable will store the sum of digits
+        while(j > 0)//run the while loop until the number is positive
+        {
+            k=j%10;//assign k the value of right most digit
+            sum+=Math.pow(k,3);//calculate the cube of k
+            j/=10;//divide the original number by 10 so that we can move on to the next digit
+        }
+        if(sum == n)
+            return "true";//return true if the sum of the cube of digits is equal to original number as it satisfies the conditions of an Armstrong Number
+        return "false";
+    }
+}
